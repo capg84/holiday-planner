@@ -1,0 +1,57 @@
+header {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 120px;
+    background-color: rgb(117, 8, 101);
+    padding: 30px;
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+    font-size: 60px;
+    color: #ffffff;
+}
+
+main {
+    background-color: blueviolet;
+    background-image: url(./images/beach.png);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 150px);
+}
+
+.overlay {
+    background: rgba(117, 8, 101, 0.8);
+    overflow: hidden;
+    height: 100%;
+   }
+
+
+.input-row {
+    margin: 100px 0 30px 0;
+}
+
+.btn-row {
+    margin-top: 50px;
+}
+
+button {
+    width: 150px;
+}
+
+input {
+    background-color: darkblue;
+    width: 470px;
+}
+
+footer {
+    background-color: rgb(117, 8, 101);
+    color: #ffffff;
+    text-align: center;
+}
+
+i:hover {
+    cursor: pointer;
+}
