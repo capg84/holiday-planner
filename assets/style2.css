@@ -5,14 +5,31 @@ body {
 
 .header {
     background-color: #6F2C4F;
-    /* color: rgb(230, 127, 53); */
+    color: rgb(230, 127, 53);
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 120px;
 }
 
+.logo {
+    padding-left: 30px;
+    min-width: 300px;
+    display: flex;
+    font-family: 'Staatliches', cursive;
+    font-size: 45px;
+}
+
+.grid {
+    height: 655px;
+}
 
 #btn {
-    margin: 20px 20px 20px 1500px;
+    margin-right: 30px;
+}
+
+#btn {
     padding: 10px 60px 10px 60px;
 }
 
@@ -40,14 +57,13 @@ body {
     font-size: 30px;
 }
 
-.dropdawn {
+.dropdown {
     margin-top: 50px;
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     font-size: 20px;
-    margin-left: 70px;
 }
 
 #equalSign {
@@ -60,21 +76,10 @@ body {
 }
 
 footer {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     text-align: center;
-}
-
-.colorBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-
-.box {
-    height: 50px;
-    width: 50px;
-    background-color: #b03264;
-    margin: 20px 20px 20px 20px;
+    background-color: rgb(117, 8, 101);
+    color: #ffffff;
 }
