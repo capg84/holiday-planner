@@ -14,7 +14,6 @@ h1 {
 }
 
 main {
-    background-color: blueviolet;
     background-image: url(./images/beach.png);
     background-position: center; /* Center the image */
     background-repeat: no-repeat;
@@ -42,7 +41,6 @@ button {
 }
 
 input {
-    background-color: darkblue;
     width: 470px;
 }
 
