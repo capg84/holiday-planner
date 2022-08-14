@@ -3,7 +3,7 @@ header {
     justify-content: center;
     width: 100vw;
     height: 120px;
-    background-color: rgb(117, 8, 101);
+    background-color: #6F2C4F;
     padding: 30px;
 }
 
@@ -18,11 +18,11 @@ main {
     background-position: center; /* Center the image */
     background-repeat: no-repeat;
     background-size: cover;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 176px);
 }
 
 .overlay {
-    background: rgba(117, 8, 101, 0.8);
+    background: rgba(111, 44, 79, 0.8);
     overflow: hidden;
     height: 100%;
    }
@@ -45,9 +45,10 @@ input {
 }
 
 footer {
-    background-color: rgb(117, 8, 101);
-    color: #ffffff;
+    background-color: #6F2C4F;
+    color: lightgray;
     text-align: center;
+    height: 60px;
 }
 
 i:hover {

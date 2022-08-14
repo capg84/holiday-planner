@@ -10,16 +10,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./Assets/style2.css" />
-    <title>Holiday Planner</title>
+    <title>Destination Guide</title>
 </head>
 
 <body>
     <header class="header">
-        <div class="logo">Holiday Planner</div>
-        <button id="btn" class="ui orange button nav-btn">HOME</button>
+        <div class="logo">Destination Guide</div>
+        <div class="buttons">
+          <button id="btn" class="ui inverted orange button clear-btn">Clear Searches</button>
+          <button id="btn-2" class="ui orange button nav-btn">Back to Home</button>
+        </div>
+        <!-- MODAL START -->
+        <div class="ui basic modal">
+            <div class="ui icon header">
+              <i class="trash alternate outline icon"></i>
+              Clear All Searches
+            </div>
+            <div class="content">
+              <p>Are you sure you want to clear all recent searches?</p>
+            </div>
+            <div class="actions">
+              <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+              </div>
+              <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+              </div>
+            </div>
+          </div>
+          <!-- MODAL END -->
     </header>
 
-    <div class="searchHist">Recent Searches:</div>
+    <div class="searchHist">
+      <h3>Recent Searches:</h3>
+    </div>
    <main>
         <div class="ui grid mainInfo">
             <div class="four wide column">
@@ -39,9 +65,19 @@
                     <textarea rows="1" class="converted"></textarea>
                 </div>
             </div>
-
-            <div class="eight wide column">City name ....(will be added via js)</div>
-            <div class="four wide column">Current Weather</div>
+            <!--COUNTRY INFORMATION-->
+            <div class="eight wide column">
+              <h1>City name ....(will be added via js)</h1>
+            </div>
+            <!--WEATHER INFORMATION-->
+            <div class="four wide column">
+              <h1 class="date">Current Weather</h1>
+              <div class="icon"></div>
+              <p class="temp">Temperature: </p>
+              <p class ="wind">Wind: </p>
+              <p class ="humidity">Humidity: </p>
+              <p class="uvi">UV Index: <span></span></p>
+            </div>
         </div>
     </main>
     <footer>
@@ -50,13 +86,13 @@
             <a href="#" class="fa fa-instagram"></a>
             <i class="envelope icon"></i>
         </div>
-        <div><p>&copy; Copyright 2022. Destination Guide, All Rights Reserved</p></div>
+        <p> &copy; Copyright 2022. Destination Guide, All Rights Reserved</p>
     </footer>
 
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="./assets/search.js"></script>
 </body>
 
 </html>
