@@ -167,6 +167,8 @@ $(".ui.green.ok.inverted.button").click(function(){
 
 getSearchQuery();
 
+$('.ui.dropdown')
+  .dropdown();
 
 
 
