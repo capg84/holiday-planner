@@ -1,257 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./Assets/style2.css" />
     <title>Destination Guide</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header">
-        <div class="logo">Destination Guide</div>
-        <div class="buttons">
-          <button id="btn" class="ui inverted orange button clear-btn">Clear Searches</button>
-          <button id="btn-2" class="ui orange button nav-btn">Back to Home</button>
+      <div class="logo">Destination Guide</div>
+      <div class="buttons">
+        <button id="btn" class="ui inverted orange button clear-btn">
+          Clear Searches
+        </button>
+        <button id="btn-2" class="ui orange button nav-btn">
+          Back to Home
+        </button>
+      </div>
+      <!-- MODAL START -->
+      <div class="ui basic modal">
+        <div class="ui icon header">
+          <i class="trash alternate outline icon"></i>
+          Clear All Searches
         </div>
-        <!-- MODAL START -->
-        <div class="ui basic modal">
-            <div class="ui icon header">
-              <i class="trash alternate outline icon"></i>
-              Clear All Searches
-            </div>
-            <div class="content">
-              <p>Are you sure you want to clear all recent searches?</p>
-            </div>
-            <div class="actions">
-              <div class="ui red basic cancel inverted button">
-                <i class="remove icon"></i>
-                No
-              </div>
-              <div class="ui green ok inverted button">
-                <i class="checkmark icon"></i>
-                Yes
-              </div>
-            </div>
+        <div class="content">
+          <p>Are you sure you want to clear all recent searches?</p>
+        </div>
+        <div class="actions">
+          <div class="ui red basic cancel inverted button">
+            <i class="remove icon"></i>
+            No
           </div>
-          <!-- MODAL END -->
+          <div class="ui green ok inverted button">
+            <i class="checkmark icon"></i>
+            Yes
+          </div>
+        </div>
+      </div>
+      <!-- MODAL END -->
     </header>
 
-    <div class="searchHist">
-      <h3>Recent Searches:</h3>
+    <div class="searchHist custom-search" id="city-buttons">
+      Recent Searches:
     </div>
-   <main>
-        <div class="ui grid mainInfo">
-            <div class="four wide column">
-                <div>Currency Converter</div>
-                <div>
-                    <div class="ui selection dropdown">
-                        <input type="hidden" name="currency">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">Currency</div>
-                        <div class="menu">
-                          <div class ="item" data-value="AED">AED</div>
-                          <div class ="item" data-value="AFN">AFN</div>
-                          <div class ="item" data-value="ALL">ALL</div>
-                          <div class ="item" data-value="AMD">AMD</div>
-                          <div class ="item" data-value="ANG">ANG</div>
-                          <div class ="item" data-value="AOA">AOA</div>
-                          <div class ="item" data-value="ARS">ARS</div>
-                          <div class ="item" data-value="AUD">AUD</div>
-                          <div class ="item" data-value="AWG">AWG</div>
-                          <div class ="item" data-value="AZN">AZN</div>
-                          <div class ="item" data-value="BAM">BAM</div>
-                          <div class ="item" data-value="BBD">BBD</div>
-                          <div class ="item" data-value="BDT">BDT</div>
-                          <div class ="item" data-value="BGN">BGN</div>
-                          <div class ="item" data-value="BHD">BHD</div>
-                          <div class ="item" data-value="BIF">BIF</div>
-                          <div class ="item" data-value="BMD">BMD</div>
-                          <div class ="item" data-value="BND">BND</div>
-                          <div class ="item" data-value="BOB">BOB</div>
-                          <div class ="item" data-value="BRL">BRL</div>
-                          <div class ="item" data-value="BSD">BSD</div>
-                          <div class ="item" data-value="BTN">BTN</div>
-                          <div class ="item" data-value="BWP">BWP</div>
-                          <div class ="item" data-value="BYN">BYN</div>
-                          <div class ="item" data-value="BZD">BZD</div>
-                          <div class ="item" data-value="CAD">CAD</div>
-                          <div class ="item" data-value="CDF">CDF</div>
-                          <div class ="item" data-value="CHF">CHF</div>
-                          <div class ="item" data-value="CLP">CLP</div>
-                          <div class ="item" data-value="CNY">CNY</div>
-                          <div class ="item" data-value="COP">COP</div>
-                          <div class ="item" data-value="CRC">CRC</div>
-                          <div class ="item" data-value="CUP">CUP</div>
-                          <div class ="item" data-value="CVE">CVE</div>
-                          <div class ="item" data-value="CZK">CZK</div>
-                          <div class ="item" data-value="DJF">DJF</div>
-                          <div class ="item" data-value="DKK">DKK</div>
-                          <div class ="item" data-value="DOP">DOP</div>
-                          <div class ="item" data-value="DZD">DZD</div>
-                          <div class ="item" data-value="EGP">EGP</div>
-                          <div class ="item" data-value="ERN">ERN</div>
-                          <div class ="item" data-value="ETB">ETB</div>
-                          <div class ="item" data-value="EUR">EUR</div>
-                          <div class ="item" data-value="FJD">FJD</div>
-                          <div class ="item" data-value="FKP">FKP</div>
-                          <div class ="item" data-value="FOK">FOK</div>
-                          <div class ="item" data-value="GBP">GBP</div>
-                          <div class ="item" data-value="GEL">GEL</div>
-                          <div class ="item" data-value="GGP">GGP</div>
-                          <div class ="item" data-value="GHS">GHS</div>
-                          <div class ="item" data-value="GIP">GIP</div>
-                          <div class ="item" data-value="GMD">GMD</div>
-                          <div class ="item" data-value="GNF">GNF</div>
-                          <div class ="item" data-value="GTQ">GTQ</div>
-                          <div class ="item" data-value="GYD">GYD</div>
-                          <div class ="item" data-value="HKD">HKD</div>
-                          <div class ="item" data-value="HNL">HNL</div>
-                          <div class ="item" data-value="HRK">HRK</div>
-                          <div class ="item" data-value="HTG">HTG</div>
-                          <div class ="item" data-value="HUF">HUF</div>
-                          <div class ="item" data-value="IDR">IDR</div>
-                          <div class ="item" data-value="ILS">ILS</div>
-                          <div class ="item" data-value="IMP">IMP</div>
-                          <div class ="item" data-value="INR">INR</div>
-                          <div class ="item" data-value="IQD">IQD</div>
-                          <div class ="item" data-value="IRR">IRR</div>
-                          <div class ="item" data-value="ISK">ISK</div>
-                          <div class ="item" data-value="JEP">JEP</div>
-                          <div class ="item" data-value="JMD">JMD</div>
-                          <div class ="item" data-value="JOD">JOD</div>
-                          <div class ="item" data-value="JPY">JPY</div>
-                          <div class ="item" data-value="KES">KES</div>
-                          <div class ="item" data-value="KGS">KGS</div>
-                          <div class ="item" data-value="KHR">KHR</div>
-                          <div class ="item" data-value="KID">KID</div>
-                          <div class ="item" data-value="KMF">KMF</div>
-                          <div class ="item" data-value="KRW">KRW</div>
-                          <div class ="item" data-value="KWD">KWD</div>
-                          <div class ="item" data-value="KYD">KYD</div>
-                          <div class ="item" data-value="KZT">KZT</div>
-                          <div class ="item" data-value="LAK">LAK</div>
-                          <div class ="item" data-value="LBP">LBP</div>
-                          <div class ="item" data-value="LKR">LKR</div>
-                          <div class ="item" data-value="LRD">LRD</div>
-                          <div class ="item" data-value="LSL">LSL</div>
-                          <div class ="item" data-value="LYD">LYD</div>
-                          <div class ="item" data-value="MAD">MAD</div>
-                          <div class ="item" data-value="MDL">MDL</div>
-                          <div class ="item" data-value="MGA">MGA</div>
-                          <div class ="item" data-value="MKD">MKD</div>
-                          <div class ="item" data-value="MMK">MMK</div>
-                          <div class ="item" data-value="MNT">MNT</div>
-                          <div class ="item" data-value="MOP">MOP</div>
-                          <div class ="item" data-value="MRU">MRU</div>
-                          <div class ="item" data-value="MUR">MUR</div>
-                          <div class ="item" data-value="MVR">MVR</div>
-                          <div class ="item" data-value="MWK">MWK</div>
-                          <div class ="item" data-value="MXN">MXN</div>
-                          <div class ="item" data-value="MYR">MYR</div>
-                          <div class ="item" data-value="MZN">MZN</div>
-                          <div class ="item" data-value="NAD">NAD</div>
-                          <div class ="item" data-value="NGN">NGN</div>
-                          <div class ="item" data-value="NIO">NIO</div>
-                          <div class ="item" data-value="NOK">NOK</div>
-                          <div class ="item" data-value="NPR">NPR</div>
-                          <div class ="item" data-value="NZD">NZD</div>
-                          <div class ="item" data-value="OMR">OMR</div>
-                          <div class ="item" data-value="PAB">PAB</div>
-                          <div class ="item" data-value="PEN">PEN</div>
-                          <div class ="item" data-value="PGK">PGK</div>
-                          <div class ="item" data-value="PHP">PHP</div>
-                          <div class ="item" data-value="PKR">PKR</div>
-                          <div class ="item" data-value="PLN">PLN</div>
-                          <div class ="item" data-value="PYG">PYG</div>
-                          <div class ="item" data-value="QAR">QAR</div>
-                          <div class ="item" data-value="RON">RON</div>
-                          <div class ="item" data-value="RSD">RSD</div>
-                          <div class ="item" data-value="RUB">RUB</div>
-                          <div class ="item" data-value="RWF">RWF</div>
-                          <div class ="item" data-value="SAR">SAR</div>
-                          <div class ="item" data-value="SBD">SBD</div>
-                          <div class ="item" data-value="SCR">SCR</div>
-                          <div class ="item" data-value="SDG">SDG</div>
-                          <div class ="item" data-value="SEK">SEK</div>
-                          <div class ="item" data-value="SGD">SGD</div>
-                          <div class ="item" data-value="SHP">SHP</div>
-                          <div class ="item" data-value="SLE">SLE</div>
-                          <div class ="item" data-value="SOS">SOS</div>
-                          <div class ="item" data-value="SRD">SRD</div>
-                          <div class ="item" data-value="SSP">SSP</div>
-                          <div class ="item" data-value="STN">STN</div>
-                          <div class ="item" data-value="SYP">SYP</div>
-                          <div class ="item" data-value="SZL">SZL</div>
-                          <div class ="item" data-value="THB">THB</div>
-                          <div class ="item" data-value="TJS">TJS</div>
-                          <div class ="item" data-value="TMT">TMT</div>
-                          <div class ="item" data-value="TND">TND</div>
-                          <div class ="item" data-value="TOP">TOP</div>
-                          <div class ="item" data-value="TRY">TRY</div>
-                          <div class ="item" data-value="TTD">TTD</div>
-                          <div class ="item" data-value="TVD">TVD</div>
-                          <div class ="item" data-value="TWD">TWD</div>
-                          <div class ="item" data-value="TZS">TZS</div>
-                          <div class ="item" data-value="UAH">UAH</div>
-                          <div class ="item" data-value="UGX">UGX</div>
-                          <div class ="item" data-value="USD">USD</div>
-                          <div class ="item" data-value="UYU">UYU</div>
-                          <div class ="item" data-value="UZS">UZS</div>
-                          <div class ="item" data-value="VES">VES</div>
-                          <div class ="item" data-value="VND">VND</div>
-                          <div class ="item" data-value="VUV">VUV</div>
-                          <div class ="item" data-value="WST">WST</div>
-                          <div class ="item" data-value="XAF">XAF</div>
-                          <div class ="item" data-value="XCD">XCD</div>
-                          <div class ="item" data-value="XDR">XDR</div>
-                          <div class ="item" data-value="XOF">XOF</div>
-                          <div class ="item" data-value="XPF">XPF</div>
-                          <div class ="item" data-value="YER">YER</div>
-                          <div class ="item" data-value="ZAR">ZAR</div>
-                          <div class ="item" data-value="ZMW">ZMW</div>
-                          <div class ="item" data-value="ZWL">ZWL</div>
-                        </div>
-                      </div>
-                    <textarea rows="1"></textarea>
-                    <p id="equalSign">=</p>
-                    <textarea rows="1" class="converted"></textarea>
-                </div>
+    <main>
+      <div class="ui grid mainInfo">
+        <div class="four wide column">
+          <div>Currency Converter</div>
+          <div>
+            <div class="ui selection dropdown">
+              <input type="hidden" name="currency" />
+              <i class="dropdown icon"></i>
+              <div class="default text">Currency</div>
+              <div class="menu">
+                <div class="item" data-value="AED">AED</div>
+                <div class="item" data-value="AFN">AFN</div>
+                <div class="item" data-value="ALL">ALL</div>
+                <div class="item" data-value="AMD">AMD</div>
+                <div class="item" data-value="ANG">ANG</div>
+                <div class="item" data-value="AOA">AOA</div>
+                <div class="item" data-value="ARS">ARS</div>
+                <div class="item" data-value="AUD">AUD</div>
+                <div class="item" data-value="AWG">AWG</div>
+                <div class="item" data-value="AZN">AZN</div>
+                <div class="item" data-value="BAM">BAM</div>
+                <div class="item" data-value="BBD">BBD</div>
+                <div class="item" data-value="BDT">BDT</div>
+                <div class="item" data-value="BGN">BGN</div>
+                <div class="item" data-value="BHD">BHD</div>
+                <div class="item" data-value="BIF">BIF</div>
+                <div class="item" data-value="BMD">BMD</div>
+                <div class="item" data-value="BND">BND</div>
+                <div class="item" data-value="BOB">BOB</div>
+                <div class="item" data-value="BRL">BRL</div>
+                <div class="item" data-value="BSD">BSD</div>
+                <div class="item" data-value="BTN">BTN</div>
+                <div class="item" data-value="BWP">BWP</div>
+                <div class="item" data-value="BYN">BYN</div>
+                <div class="item" data-value="BZD">BZD</div>
+                <div class="item" data-value="CAD">CAD</div>
+                <div class="item" data-value="CDF">CDF</div>
+                <div class="item" data-value="CHF">CHF</div>
+                <div class="item" data-value="CLP">CLP</div>
+                <div class="item" data-value="CNY">CNY</div>
+                <div class="item" data-value="COP">COP</div>
+                <div class="item" data-value="CRC">CRC</div>
+                <div class="item" data-value="CUP">CUP</div>
+                <div class="item" data-value="CVE">CVE</div>
+                <div class="item" data-value="CZK">CZK</div>
+                <div class="item" data-value="DJF">DJF</div>
+                <div class="item" data-value="DKK">DKK</div>
+                <div class="item" data-value="DOP">DOP</div>
+                <div class="item" data-value="DZD">DZD</div>
+                <div class="item" data-value="EGP">EGP</div>
+                <div class="item" data-value="ERN">ERN</div>
+                <div class="item" data-value="ETB">ETB</div>
+                <div class="item" data-value="EUR">EUR</div>
+                <div class="item" data-value="FJD">FJD</div>
+                <div class="item" data-value="FKP">FKP</div>
+                <div class="item" data-value="FOK">FOK</div>
+                <div class="item" data-value="GBP">GBP</div>
+                <div class="item" data-value="GEL">GEL</div>
+                <div class="item" data-value="GGP">GGP</div>
+                <div class="item" data-value="GHS">GHS</div>
+                <div class="item" data-value="GIP">GIP</div>
+                <div class="item" data-value="GMD">GMD</div>
+                <div class="item" data-value="GNF">GNF</div>
+                <div class="item" data-value="GTQ">GTQ</div>
+                <div class="item" data-value="GYD">GYD</div>
+                <div class="item" data-value="HKD">HKD</div>
+                <div class="item" data-value="HNL">HNL</div>
+                <div class="item" data-value="HRK">HRK</div>
+                <div class="item" data-value="HTG">HTG</div>
+                <div class="item" data-value="HUF">HUF</div>
+                <div class="item" data-value="IDR">IDR</div>
+                <div class="item" data-value="ILS">ILS</div>
+                <div class="item" data-value="IMP">IMP</div>
+                <div class="item" data-value="INR">INR</div>
+                <div class="item" data-value="IQD">IQD</div>
+                <div class="item" data-value="IRR">IRR</div>
+                <div class="item" data-value="ISK">ISK</div>
+                <div class="item" data-value="JEP">JEP</div>
+                <div class="item" data-value="JMD">JMD</div>
+                <div class="item" data-value="JOD">JOD</div>
+                <div class="item" data-value="JPY">JPY</div>
+                <div class="item" data-value="KES">KES</div>
+                <div class="item" data-value="KGS">KGS</div>
+                <div class="item" data-value="KHR">KHR</div>
+                <div class="item" data-value="KID">KID</div>
+                <div class="item" data-value="KMF">KMF</div>
+                <div class="item" data-value="KRW">KRW</div>
+                <div class="item" data-value="KWD">KWD</div>
+                <div class="item" data-value="KYD">KYD</div>
+                <div class="item" data-value="KZT">KZT</div>
+                <div class="item" data-value="LAK">LAK</div>
+                <div class="item" data-value="LBP">LBP</div>
+                <div class="item" data-value="LKR">LKR</div>
+                <div class="item" data-value="LRD">LRD</div>
+                <div class="item" data-value="LSL">LSL</div>
+                <div class="item" data-value="LYD">LYD</div>
+                <div class="item" data-value="MAD">MAD</div>
+                <div class="item" data-value="MDL">MDL</div>
+                <div class="item" data-value="MGA">MGA</div>
+                <div class="item" data-value="MKD">MKD</div>
+                <div class="item" data-value="MMK">MMK</div>
+                <div class="item" data-value="MNT">MNT</div>
+                <div class="item" data-value="MOP">MOP</div>
+                <div class="item" data-value="MRU">MRU</div>
+                <div class="item" data-value="MUR">MUR</div>
+                <div class="item" data-value="MVR">MVR</div>
+                <div class="item" data-value="MWK">MWK</div>
+                <div class="item" data-value="MXN">MXN</div>
+                <div class="item" data-value="MYR">MYR</div>
+                <div class="item" data-value="MZN">MZN</div>
+                <div class="item" data-value="NAD">NAD</div>
+                <div class="item" data-value="NGN">NGN</div>
+                <div class="item" data-value="NIO">NIO</div>
+                <div class="item" data-value="NOK">NOK</div>
+                <div class="item" data-value="NPR">NPR</div>
+                <div class="item" data-value="NZD">NZD</div>
+                <div class="item" data-value="OMR">OMR</div>
+                <div class="item" data-value="PAB">PAB</div>
+                <div class="item" data-value="PEN">PEN</div>
+                <div class="item" data-value="PGK">PGK</div>
+                <div class="item" data-value="PHP">PHP</div>
+                <div class="item" data-value="PKR">PKR</div>
+                <div class="item" data-value="PLN">PLN</div>
+                <div class="item" data-value="PYG">PYG</div>
+                <div class="item" data-value="QAR">QAR</div>
+                <div class="item" data-value="RON">RON</div>
+                <div class="item" data-value="RSD">RSD</div>
+                <div class="item" data-value="RUB">RUB</div>
+                <div class="item" data-value="RWF">RWF</div>
+                <div class="item" data-value="SAR">SAR</div>
+                <div class="item" data-value="SBD">SBD</div>
+                <div class="item" data-value="SCR">SCR</div>
+                <div class="item" data-value="SDG">SDG</div>
+                <div class="item" data-value="SEK">SEK</div>
+                <div class="item" data-value="SGD">SGD</div>
+                <div class="item" data-value="SHP">SHP</div>
+                <div class="item" data-value="SLE">SLE</div>
+                <div class="item" data-value="SOS">SOS</div>
+                <div class="item" data-value="SRD">SRD</div>
+                <div class="item" data-value="SSP">SSP</div>
+                <div class="item" data-value="STN">STN</div>
+                <div class="item" data-value="SYP">SYP</div>
+                <div class="item" data-value="SZL">SZL</div>
+                <div class="item" data-value="THB">THB</div>
+                <div class="item" data-value="TJS">TJS</div>
+                <div class="item" data-value="TMT">TMT</div>
+                <div class="item" data-value="TND">TND</div>
+                <div class="item" data-value="TOP">TOP</div>
+                <div class="item" data-value="TRY">TRY</div>
+                <div class="item" data-value="TTD">TTD</div>
+                <div class="item" data-value="TVD">TVD</div>
+                <div class="item" data-value="TWD">TWD</div>
+                <div class="item" data-value="TZS">TZS</div>
+                <div class="item" data-value="UAH">UAH</div>
+                <div class="item" data-value="UGX">UGX</div>
+                <div class="item" data-value="USD">USD</div>
+                <div class="item" data-value="UYU">UYU</div>
+                <div class="item" data-value="UZS">UZS</div>
+                <div class="item" data-value="VES">VES</div>
+                <div class="item" data-value="VND">VND</div>
+                <div class="item" data-value="VUV">VUV</div>
+                <div class="item" data-value="WST">WST</div>
+                <div class="item" data-value="XAF">XAF</div>
+                <div class="item" data-value="XCD">XCD</div>
+                <div class="item" data-value="XDR">XDR</div>
+                <div class="item" data-value="XOF">XOF</div>
+                <div class="item" data-value="XPF">XPF</div>
+                <div class="item" data-value="YER">YER</div>
+                <div class="item" data-value="ZAR">ZAR</div>
+                <div class="item" data-value="ZMW">ZMW</div>
+                <div class="item" data-value="ZWL">ZWL</div>
+              </div>
             </div>
-            <!--COUNTRY INFORMATION-->
-            <div class="eight wide column">
-              <h1>City name ....(will be added via js)</h1>
-            </div>
-            <!--WEATHER INFORMATION-->
-            <div class="four wide column">
-              <h1 class="date">Current Weather</h1>
-              <div class="icon"></div>
-              <p class="temp">Temperature: </p>
-              <p class ="wind">Wind: </p>
-              <p class ="humidity">Humidity: </p>
-              <p class="uvi">UV Index: <span></span></p>
-            </div>
+            <textarea rows="1"></textarea>
+            <p id="equalSign">=</p>
+            <textarea rows="1" class="converted"></textarea>
+          </div>
         </div>
+        <!--COUNTRY INFORMATION-->
+        <div class="eight wide column" id="country-details"></div>
+        <!--WEATHER INFORMATION-->
+        <div class="four wide column">
+          <h1 class="date">Current Weather</h1>
+          <div class="icon"></div>
+          <p class="temp">Temperature:</p>
+          <p class="wind">Wind:</p>
+          <p class="humidity">Humidity:</p>
+          <p class="uvi">UV Index: <span></span></p>
+        </div>
+      </div>
     </main>
-    <!-- <footer>
-        <div class="row">
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-instagram"></a>
-            <i class="envelope icon"></i>
-        </div>
-        <p> &copy; Copyright 2022. Destination Guide, All Rights Reserved</p>
-    </footer> -->
+    <footer>
+      <div class="row">
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <i class="envelope icon"></i>
+      </div>
+      <div>
+        <p>&copy; Copyright 2022. Destination Guide, All Rights Reserved</p>
+      </div>
+    </footer>
 
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <script src="./assets/search.js"></script>
-</body>
-
+    <script type="module" src="./assets/js/search.js"></script>
+  </body>
 </html>
