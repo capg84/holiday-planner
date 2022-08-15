@@ -181,7 +181,7 @@ function getWeatherApi(lat, lon, name) {
     })
     .then(function (data) {
       var dateEl = document.querySelector(".date");
-      var iconEl = document.querySelector(".icon");
+      var iconEl = document.querySelector(".icons");
       //display city name, date and icon
       var unix_timestamp = data.current.dt;
       var date = new Date(unix_timestamp * 1000);
