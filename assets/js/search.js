@@ -1,4 +1,12 @@
 import "./script.js";
+
+var currencyApiKey = "2af4ef798a01b92fe52e4860";
+var selectedCurrency = document.getElementsByClassName("active");
+var calculate = document.getElementById('calBtn');
+var convertedAmountEl = document.getElementById('converted');
+var fromCurrency = "";
+var localAmount = "";
+var visitingCurrency = ""; 
 var searchHistoryEl = document.querySelector(".searchHist");
 var savedData = JSON.parse(localStorage.getItem("searches")) || [];
 
@@ -117,6 +125,8 @@ function displayDetails(countryData) {
   let currencyKeys = Object.keys(currencies);
   // select first currency
   let currency = currencyKeys[0];
+  visitingCurrency = currency;
+  console.log(visitingCurrency);
   // get symbol for currency
   let currencySymbol = currencies[Object.keys(currencies)[0]].symbol;
   currencyEl.innerHTML =
@@ -243,7 +253,7 @@ function saveWeatherSearch(lat, lon, name) {
 //------------------- NAV BAR BUTTONS -----------------------
 
 //if user clicks back to home button, go to homepage
-$("#btn-2").click(function () {
+$(".logo").click(function () {
   var homePage = "./index.html";
   location.assign(homePage);
 });
@@ -276,186 +286,58 @@ $(".ui.dropdown").dropdown();
 
 //currency coverter API
 
-var fromCurrencyItem = document.getElementsByClassName("item");
-var fromCurrencyMenu = document.getElementsByClassName("menu");
-var currencyApiKey = "2af4ef798a01b92fe52e4860";
+  //adding event to the calculate button
+  calculate.addEventListener("click", function(){
+    
+    var localAmountEl = document.getElementById('fromCurrencyInput');
+    localAmount = localAmountEl.value;
+    console.log(localAmount);
 
-var fromCurrency = [
-  "AED",
-  "AFN",
-  "ALL",
-  "AMD",
-  "ANG",
-  "AOA",
-  "ARS",
-  "AUD",
-  "AWG",
-  "AZN",
-  "BAM",
-  "BBD",
-  "BDT",
-  "BGN",
-  "BHD",
-  "BIF",
-  "BMD",
-  "BND",
-  "BOB",
-  "BRL",
-  "BSD",
-  "BTN",
-  "BWP",
-  "BYN",
-  "BZD",
-  "CAD",
-  "CDF",
-  "CHF",
-  "CLP",
-  "CNY",
-  "COP",
-  "CRC",
-  "CUP",
-  "CVE",
-  "CZK",
-  "DJF",
-  "DKK",
-  "DOP",
-  "DZD",
-  "EGP",
-  "ERN",
-  "ETB",
-  "EUR",
-  "FJD",
-  "FKP",
-  "FOK",
-  "GBP",
-  "GEL",
-  "GGP",
-  "GHS",
-  "GIP",
-  "GMD",
-  "GNF",
-  "GTQ",
-  "GYD",
-  "HKD",
-  "HNL",
-  "HRK",
-  "HTG",
-  "HUF",
-  "IDR",
-  "ILS",
-  "IMP",
-  "INR",
-  "IQD",
-  "IRR",
-  "ISK",
-  "JEP",
-  "JMD",
-  "JOD",
-  "JPY",
-  "KES",
-  "KGS",
-  "KHR",
-  "KID",
-  "KMF",
-  "KRW",
-  "KWD",
-  "KYD",
-  "KZT",
-  "LAK",
-  "LBP",
-  "LKR",
-  "LRD",
-  "LSL",
-  "LYD",
-  "MAD",
-  "MDL",
-  "MGA",
-  "MKD",
-  "MMK",
-  "MNT",
-  "MOP",
-  "MRU",
-  "MUR",
-  "MVR",
-  "MWK",
-  "MXN",
-  "MYR",
-  "MZN",
-  "NAD",
-  "NGN",
-  "NIO",
-  "NOK",
-  "NPR",
-  "NZD",
-  "OMR",
-  "PAB",
-  "PEN",
-  "PGK",
-  "PHP",
-  "PKR",
-  "PLN",
-  "PYG",
-  "QAR",
-  "RON",
-  "RSD",
-  "RUB",
-  "RWF",
-  "SAR",
-  "SBD",
-  "SCR",
-  "SDG",
-  "SEK",
-  "SGD",
-  "SHP",
-  "SLE",
-  "SOS",
-  "SRD",
-  "SSP",
-  "STN",
-  "SYP",
-  "SZL",
-  "THB",
-  "TJS",
-  "TMT",
-  "TND",
-  "TOP",
-  "TRY",
-  "TTD",
-  "TVD",
-  "TWD",
-  "TZS",
-  "UAH",
-  "UGX",
-  "USD",
-  "UYU",
-  "UZS",
-  "VES",
-  "VND",
-  "VUV",
-  "WST",
-  "XAF",
-  "XCD",
-  "XDR",
-  "XOF",
-  "XPF",
-  "YER",
-  "ZAR",
-  "ZMW",
-  "ZWL",
-];
+    fromCurrency = document.getElementsByClassName('text')[0].innerHTML;
+    console.log(fromCurrency);
 
-var fromCurrOption = "";
+    currencyApi()
 
-for (var i = 0; i < fromCurrency.length; i++) {
-  fromCurrOption +=
-    '<div class ="item" data-value="' +
-    fromCurrency[i] +
-    '">' +
-    fromCurrency[i] +
-    "</div>;";
+  });
+
+  //function to format the numbers to money
+  function formatMoney(number, decPlaces, decSep, thouSep) {
+    decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
+    decSep = typeof decSep === "undefined" ? "." : decSep;
+    thouSep = typeof thouSep === "undefined" ? "," : thouSep;
+    var sign = number < 0 ? "-" : "";
+    var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
+    var j = (j = i.length) > 3 ? j % 3 : 0;
+
+    return sign +
+        (j ? i.substr(0, j) + thouSep : "") +
+        i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
+        (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+  }
+
+function currencyApi() {
+  var currencyApiUrl =  'https://v6.exchangerate-api.com/v6/'+currencyApiKey+'/pair/'+fromCurrency+'/'+visitingCurrency;
+
+  console.log(currencyApiUrl);
+  console.log(visitingCurrency);
+  
+  fetch(currencyApiUrl)
+    .then(response => response.json())
+    .then(data=> { 
+    console.log('£1 = '+ visitingCurrency + data.conversion_rate); 
+
+    var currentRate = data.conversion_rate;
+    document.getElementById('currentRate').innerText = "Current rate is 1 "+ fromCurrency + " = " + visitingCurrency + ' ' + currentRate;
+
+    var convertedAmount = localAmount * data.conversion_rate;
+    console.log(formatMoney(convertedAmount));
+
+    convertedAmountEl.style.display = "block";
+
+    convertedAmountEl.innerText = visitingCurrency + ' ' + formatMoney(convertedAmount);
+    
+  });
 }
-fromCurrencyItem.innerhtml = fromCurrOption;
-fromCurrencyMenu.innerHTML = fromCurrOption;
 
 // media query added to adjust flag when viewport changs size to 900px or less
 function mediaQueries(mediaQ) {
