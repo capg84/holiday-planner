@@ -161,8 +161,11 @@ init();
 cityButtons.addEventListener("click", function (event) {
   event.stopPropagation();
   let element = event.target;
-  cityInputFlag = false;
-  getCityApi(element.textContent);
+  if(element.nodeName === 'BUTTON') {
+    cityInputFlag = false;
+    getCityApi(element.textContent);
+  }
+  
 });
 
 // When the html element cityForm is available and if submit button clicked then call formSubmitHandler function
