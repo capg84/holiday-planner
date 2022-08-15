@@ -340,7 +340,7 @@ function currencyApi() {
 }
 
 // media query added to adjust flag when viewport changs size to 900px or less
-function mediaQueries(mediaQ) {
+/* function mediaQueries(mediaQ) {
   $(document).ready(function () {
     if (mediaQ.matches) {
       console.log("mediaquery matches");
@@ -354,3 +354,4 @@ function mediaQueries(mediaQ) {
 let mediaQ = window.matchMedia("(max-width: 900px)");
 mediaQueries(mediaQ);
 mediaQ.addEventListener(mediaQueries);
+ */
