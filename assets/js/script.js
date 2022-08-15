@@ -30,7 +30,7 @@ let formSubmitHandler = function (event) {
 
 function getCityApi(city) {
   let requestUrl =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&appid=" +
     APIKey;
