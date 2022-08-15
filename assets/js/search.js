@@ -243,7 +243,7 @@ function saveWeatherSearch(lat, lon, name) {
 //------------------- NAV BAR BUTTONS -----------------------
 
 //if user clicks back to home button, go to homepage
-$("#btn-2").click(function () {
+$(".logo").click(function () {
   var homePage = "./index.html";
   location.assign(homePage);
 });
