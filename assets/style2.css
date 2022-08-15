@@ -7,7 +7,7 @@ main {
     background-color: lightgreen;
 }
 
-.header {
+.headerM {
     background-color: #6F2C4F;
     color: rgb(230, 127, 53);
     display: flex;
@@ -97,6 +97,11 @@ main {
 /* .converted {
     margin-bottom: 100px;
 } */
+
+.clearBtn {
+    width: 100%;
+    text-align: center;
+}
 
 footer {
     position: absolute; 

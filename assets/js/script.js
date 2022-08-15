@@ -62,20 +62,6 @@ function getCityApi(city) {
 // display modal messages
 function displayError(errorMessage) {
   alert(errorMessage);
-  //   customContent.firstElementChild.textContent = errorMessage;
-  //   let okIcon = document.createElement("i");
-  //   okIcon.setAttribute("class", "x icon");
-  //   customIcon.appendChild(okIcon);
-
-  //   let okButtIcon = document.createElement("i");
-  //   okButtIcon.setAttribute("class", "checkmark icon");
-  //   actions.firstElementChild.setAttribute(
-  //     "class",
-  //     "ui green ok inverted button"
-  //   );
-  //   customAction.textContent = "ok ";
-  //   customAction.appendChild(okButtIcon);
-  //   $(".mini.modal").modal("show");
 }
 
 // The following function renders items in a cities list as <button> elements
