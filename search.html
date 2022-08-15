@@ -237,9 +237,10 @@
                 <div class="item" data-value="ZWL">ZWL</div>
               </div>
             </div>
-            <textarea rows="1"></textarea>
-            <p id="equalSign">=</p>
-            <textarea rows="1" class="converted"></textarea>
+            <input id="fromCurrencyInput" type="number" step=".01" placeholder="Enter your amount">
+            <button id="calBtn" class="ui primary button" control-id="ControlID-4">Calculate</button>
+            <textarea disabled id="converted" rows="1" class="converted"></textarea>
+            <p id="currentRate"></p>
           </div>
         </div>
         <!--COUNTRY INFORMATION-->

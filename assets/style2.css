@@ -94,9 +94,9 @@ main {
     color: white;
 }
 
-.converted {
+/* .converted {
     margin-bottom: 100px;
-}
+} */
 
 footer {
     position: absolute; 
@@ -106,4 +106,13 @@ footer {
     background-color: #6F2C4F;
     color: #ffffff;
     height: 60px;
+}
+
+#converted {
+    display: none;
+    margin: none;
+}
+
+#calBtn {
+    margin: 25px;
 }
