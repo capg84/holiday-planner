@@ -25,14 +25,20 @@
   <body>
     <header class="header">
       <div class="logo">Destination Guide</div>
+      <form id="city-form">
+        <div class="ui input focus column right floated input-row">
+            <input id="city-input" type="text" placeholder="Enter City Name"/>
+        </div>
+        <div class="column search-btn-row">
+          <button type="submit" class="ui orange button">Search</button>
+        </div>
+      </form>
       <div class="buttons">
         <button id="btn" class="ui inverted orange button clear-btn">
           Clear Searches
         </button>
-        <button id="btn-2" class="ui orange button nav-btn">
-          Back to Home
-        </button>
       </div>
+      
       <!-- MODAL START -->
       <div class="ui basic modal">
         <div class="ui icon header">
@@ -55,7 +61,6 @@
       </div>
       <!-- MODAL END -->
     </header>
-
     <div class="searchHist custom-search" id="city-buttons">
       Recent Searches:
     </div>
