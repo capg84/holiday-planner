@@ -112,9 +112,19 @@ function displayDetails(countryData) {
   // set up `<div>` to hold result content
   let countryCard = document.createElement("div");
   countryCard.setAttribute("style", "padding:22px; font-size:23px;");
+  // get population
   let populationEl = document.createElement("p");
+  var populationNum = countryData[0].population;
+  var abbreviations = ["", "k", "m", "b", "t"];
+  var abbreviatedNum = Math.floor((""+populationNum).length/3);
+  var populationValue = parseFloat((abbreviatedNum != 0 ? (populationNum / Math.pow(1000, abbreviatedNum)) : populationNum).toPrecision(2));
+  if (populationValue % 1 != 0) {
+    populationValue = populationValue.toFixed(1);
+  }
+  var abbreviatedPop = populationValue + abbreviations[abbreviatedNum];
+
   populationEl.innerHTML =
-    "<strong>Population:</strong> " + countryData[0].population;
+    "<strong>Population:</strong> " + abbreviatedPop;
   let languageEl = document.createElement("p");
   // get languages objects
   let languages = countryData[0].languages;
