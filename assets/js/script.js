@@ -24,7 +24,7 @@ let formSubmitHandler = function (event) {
     getCityApi(city);
     cityInputEl.value = "";
   } else {
-    displayError("Please enter a city name");
+    $('.first').modal('show'); // changed to modal
   }
 };
 
@@ -51,18 +51,18 @@ function getCityApi(city) {
         });
       } else {
         //   alert("Error: " + response.statusText);
-        displayError("Error: " + response.statusText);
+        $(".two").modal("show"); // changed to modal
       }
     })
     .catch(function (error) {
       // alert("Unable to connect to GitHub");
-      displayError("Unable to connet to GitHub");
+      $(".three").modal("show"); // changed to modal
     });
 }
 // display modal messages
-function displayError(errorMessage) {
-  alert(errorMessage);
-}
+// function displayError(errorMessage) {
+//   alert(errorMessage);
+// }
 
 // The following function renders items in a cities list as <button> elements
 function renderCities() {
