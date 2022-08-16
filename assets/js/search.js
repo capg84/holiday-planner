@@ -62,6 +62,9 @@ function searchCountryApi(city, country) {
     .then(function (response) {
       if (!response.ok) {
         $(".two").modal("show"); // changed to modal
+        // $(".twoBtn").click(function (event) {
+        //   event.preventDefault();
+        // });
       }
 
       return response.json();
@@ -280,7 +283,7 @@ function clearSearches() {
   location.assign("./index.html");
 }
 
-$(".ui.green.ok.inverted.button").click(function () {
+$(".zerobtn").click(function () {
   clearSearches();
 });
 
