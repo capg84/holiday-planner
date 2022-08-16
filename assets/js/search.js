@@ -41,8 +41,12 @@ function getParams() {
 
 // get city for weather data
 function getSearchQuery(city) {
+  if (city) {
   // use city from getParams
   getCoordinates(city);
+} else {
+  $('.first').modal('show'); // changed to modal
+}
 }
 
 function searchCountryApi(city, country) {
@@ -57,7 +61,7 @@ function searchCountryApi(city, country) {
   fetch(locQueryUrl)
     .then(function (response) {
       if (!response.ok) {
-        throw response.json();
+        $(".two").modal("show"); // changed to modal
       }
 
       return response.json();
@@ -95,7 +99,8 @@ function searchCountryApi(city, country) {
       }
     })
     .catch(function (error) {
-      console.error(error);
+      // alert("Unable to connect to GitHub");
+      $(".three").modal("show"); // changed to modal
     });
 }
 
@@ -260,7 +265,7 @@ $(".logo").click(function () {
 
 // if user clicks clear searches button, show modal
 $("#btn").click(function () {
-  $(".ui.basic.modal").modal("show");
+  $(".zero").modal("show");
 });
 // if user clicks cancel button, do nothing
 $(".ui.red.basic.cancel.inverted.button").click(function () {
