@@ -1,3 +1,7 @@
+body {
+    background-color: #b0326450;
+}
+
 main, .searchHist {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
@@ -5,20 +9,21 @@ main, .searchHist {
 
 main {
     background-color: lightgreen;
+    width: 100% !important;
 }
 
 .headerM {
     background-color: #6F2C4F;
     color: rgb(230, 127, 53);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    width: 100vw;
-    height: 120px;
+    width: 100%;
+    height: 220px;
 }
 
 .logo {
-    padding-left: 30px;
+    margin: 50px 0px 30px 0px;
     min-width: 300px;
     display: flex;
     font-family: 'Staatliches', cursive;
@@ -29,41 +34,78 @@ main {
 #city-form {
     display: flex;
     flex-direction: row;
-    width: 950px;
-    justify-content: right;
-    margin-top: 4px;
+    width: 100%;
+    justify-content: center;
+    margin: 0px 10px 10px 10px;
 }
 
 .input-row {
     margin-right: 20px;
-    width: 350px;
+    width: 60%;
+    height: 68%;
 }
 
 .ui.orange.button {
-    width: 130px;
-    margin-right: 20px;
+    width: 160x !important; 
+    margin-bottom: 20px;
 }
 
 #btn {
-    margin-right: 15px;
+    margin-right: 25px;
     padding: 10px 20px 10px 20px;
-    width: 150px;
+    width: 170px;
 }
 
 .searchHist {
-    margin: 30px 30px 50px 30px;
+    margin: 30px 30px 30px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.ui.grey.button {
+    width: 150px;
 }
 
 .mainInfo {
     text-align: center;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
 }
 
 .infoBlock{
     margin-top: 30px;
 }
 
-.four {
+div#country-details {
+    order: 1 !important;
     background-color: #b03264;
+    width: 100% !important;
+    height: 400px;
+}
+
+#flagImg {
+    height: 5%;
+    margin-left: 15px;
+    border: 1px solid white;
+}
+
+div#weatherForecast {
+    order: 2 !important;
+    background-color: #6F2C4F;
+    width: 100% !important;
+}
+
+div#currencyConvert {
+    order: 3 !important;
+    background-color: #b03264;
+    color: rgb(234, 216, 50);
+    width: 100% !important;
+    margin-bottom: 50px;
+}
+
+.four {
     color: rgb(230, 127, 53);
     font-size: 30px;
 }
@@ -75,9 +117,16 @@ main {
 }
 
 .eight {
-    background-color: #6F2C4F;
     color: rgb(234, 216, 50);
     font-size: 30px;
+}
+
+.eight override {
+    width: 100%;
+}
+
+.temp, .wind, .humidity, .uvi {
+    padding-left: 25px;
 }
 
 .dropdown {
@@ -89,22 +138,35 @@ main {
     font-size: 20px;
 }
 
-#equalSign {
-    margin: 80px 0px 80px 0px;
-    color: white;
-}
-
-/* .converted {
-    margin-bottom: 100px;
-} */
-
 .clearBtn {
     width: 100%;
     text-align: center;
 }
 
+#converted {
+    display: none;
+    margin: none;
+    font-size: 30px;
+    text-align: center;
+}
+
+#currentRate {
+    font-size: 14px;
+    text-align: center;
+}
+
+#calBtn {
+    margin: 25px;
+}
+
+#fromCurrencyInput {
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
 footer {
-    position: absolute; 
+    position: fixed; 
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -113,11 +175,184 @@ footer {
     height: 60px;
 }
 
-#converted {
-    display: none;
-    margin: none;
-}
+/* css properties for bigger screen */
+@media only screen and (min-width: 992px )  { 
+    body {
+        background-color: #b0326450;
+    }
 
-#calBtn {
-    margin: 25px;
-}
+    main, .searchHist {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+    }
+
+    main {
+        background-color: lightgreen;
+        width: 100% !important;
+    }
+
+    .headerM {
+        background-color: #6F2C4F;
+        color: rgb(230, 127, 53);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        width: 100%;
+        height: 120px;
+    }
+
+    .logo {
+        padding-left: 30px;
+        min-width: 300px;
+        display: flex;
+        font-family: 'Staatliches', cursive;
+        font-size: 80px;
+        cursor: pointer;
+    }
+
+    #city-form {
+        display: flex;
+        flex-direction: row;
+        width: 950px;
+        justify-content: right;
+        margin-top: 30px;
+    }
+
+    .input-row {
+        margin-right: 20px;
+        width: 350px;
+    }
+
+    .ui.orange.button {
+        width: 130px;
+        margin-right: 20px;
+    }
+
+    #btn {
+        margin-right: 15px;
+        padding: 10px 20px 10px 20px;
+        width: 150px;
+        margin-top: 20px;
+        margin-right: 50px;
+    }
+
+    .searchHist {
+        margin: 30px 30px 30px 30px;
+    }
+
+    .ui.grey.button {
+        width: 150px;
+    }
+
+    .mainInfo {
+        text-align: center;
+    }
+
+    .infoBlock{
+        margin-top: 30px;
+    }
+
+    div#country-details {
+        order: 2 !important;
+        background-color: #6F2C4F;
+        width: 33.33% !important;
+        height: 400px;
+    }
+    
+    #flagImg {
+        height: 5%;
+        margin-left: 15px;
+        border: 1px solid white;
+    }
+    
+    div#weatherForecast {
+        order: 3 !important;
+        background-color: #b03264;
+        width: 33.33% !important;
+    }
+    
+    div#currencyConvert {
+        order: 1 !important;
+        background-color: #b03264;
+        color: rgb(234, 216, 50);
+        width: 33.33% !important;
+        margin-bottom: 0px;
+    }
+
+    .four {
+        background-color: #b03264;
+        color: rgb(230, 127, 53);
+        font-size: 30px;
+    }
+
+    .four p {
+        color: #ffffff;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .eight {
+        background-color: #6F2C4F;
+        color: rgb(234, 216, 50);
+        font-size: 30px;
+    }
+
+    .temp, .wind, .humidity, .uvi {
+        padding-left: 25px;
+    }
+
+    .dropdown {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        font-size: 20px;
+    }
+
+    .clearBtn {
+        width: 100%;
+        text-align: center;
+    }
+
+    #converted {
+        display: none;
+        margin: none;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #currentRate {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    #calBtn {
+        margin: 25px 30% 25px 30%;
+        font-size: large;
+        width: 150px;
+    }
+
+    #fromCurrencyInput {
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    footer {
+        position: fixed; 
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #6F2C4F;
+        color: #ffffff;
+        height: 60px;
+    }
+
+    .row {
+        font-size: 15px;
+        padding-left: 15px;
+    }
+} 

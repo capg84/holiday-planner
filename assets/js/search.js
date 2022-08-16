@@ -95,7 +95,8 @@ function searchCountryApi(city, country) {
         // get the countrys flag
         let flag = countryData[0].flags.png;
         flagImgEl.setAttribute("src", `${flag}`);
-        flagImgEl.setAttribute("style", "width:7.5%; padding-left:10px;");
+        flagImgEl.setAttribute("id", "flagImg");
+        // flagImgEl.setAttribute("style", "height:4.5%; padding-left:10px; padding-top:5px;");
         countryDetailsEl.append(countryDetailsHeader);
         countryDetailsEl.appendChild(flagImgEl);
         displayDetails(countryData);
@@ -221,7 +222,7 @@ function getWeatherApi(lat, lon, name) {
       dateEl.textContent =
         "Current Weather (" + day + "/" + month + "/" + year + ")";
       iconEl.innerHTML =
-        '<img src="https://openweathermap.org/img/wn/' + icon + '@2x.png">';
+        '<img src="https://openweathermap.org/img/w/' + icon + '.png">';
 
       //display temp
       var temp = data.current.temp;
@@ -350,26 +351,9 @@ function currencyApi() {
     var convertedAmount = localAmount * data.conversion_rate;
     console.log(formatMoney(convertedAmount));
 
-    convertedAmountEl.style.display = "block";
+    convertedAmountEl.style.display = "inline-block";
 
     convertedAmountEl.innerText = visitingCurrency + ' ' + formatMoney(convertedAmount);
     
   });
 }
-
-// media query added to adjust flag when viewport changs size to 900px or less
-/* function mediaQueries(mediaQ) {
-  $(document).ready(function () {
-    if (mediaQ.matches) {
-      console.log("mediaquery matches");
-      countryDetailsHeader.setAttribute("style", "display:block;");
-      flagImgEl.setAttribute("style", "width:100%; padding-left:10px;");
-    }
-  });
-}
-
-// media query added to adjust flag when viewport changs size to 900px or less
-let mediaQ = window.matchMedia("(max-width: 900px)");
-mediaQueries(mediaQ);
-mediaQ.addEventListener(mediaQueries);
- */

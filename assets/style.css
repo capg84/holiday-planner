@@ -25,7 +25,7 @@ main {
     background: rgba(111, 44, 79, 0.8);
     overflow: hidden;
     height: 100%;
-   }
+}
 
 
 .input-row {
@@ -45,12 +45,86 @@ input {
 }
 
 footer {
-    background-color: #6F2C4F;
-    color: lightgray;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
     text-align: center;
+    background-color: #6F2C4F;
+    color: #ffffff;
     height: 60px;
 }
 
 i:hover {
     cursor: pointer;
+}
+
+/* css properties for bigger screen */
+@media screen and (min-width: 992px) {
+        header {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        height: 120px;
+        background-color: #6F2C4F;
+        padding: 30px;
+    }
+
+    h1 {
+        font-family: 'Staatliches', cursive;
+        font-size: 60px;
+        color: #ffffff;
+    }
+
+    main {
+        background-image: url(./images/beach.png);
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: calc(100vh - 176px);
+    }
+
+    .overlay {
+        background: rgba(111, 44, 79, 0.8);
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .input-row {
+        margin: 100px 0 30px 0;
+    }
+
+    .btn-row {
+        margin-top: 50px;
+    }
+
+    button {
+        width: 150px;
+    }
+
+    input {
+        width: 470px;
+    }
+
+    footer {
+        position: fixed; 
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-color: #6F2C4F;
+        color: #ffffff;
+        height: 60px;
+    }
+
+    .row {
+        font-size: 15px;
+        padding-left: 15px;
+    }
+
+    i:hover {
+        cursor: pointer;
+    }
+
+    .ui.orange.button{
+        font-size: 20px;
+    }
 }
