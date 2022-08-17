@@ -1,3 +1,8 @@
+# Project requirements
+Create a front-end application that could be added to personal portfolio and presented to potential employers. 
+Develop the application concept and user story considering the type of users, what they want and why.
+Create a 10-minute presentation to provide a brief overview of the application, work that has been done and ideas for future development.
+
 # destination-guide
 
 **Destination Guide, is an all-in-one application that offers a range of services such as currency conversion, country information and weather information for tourists.** 
