@@ -271,13 +271,14 @@ footer {
         order: 3 !important;
         background-color: #b03264;
         width: 33.33% !important;
+        color: white;
     }
     
     div#currencyConvert {
         order: 1 !important;
         background-color: #b03264;
-        color: rgb(234, 216, 50);
         width: 33.33% !important;
+        color: white;
         margin-bottom: 0px;
     }
 
