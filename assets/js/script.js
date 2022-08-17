@@ -24,7 +24,7 @@ let formSubmitHandler = function (event) {
     getCityApi(city);
     cityInputEl.value = "";
   } else {
-    $('.first').modal('show'); // changed to modal
+    $(".first").modal("show"); // changed to modal
   }
 };
 
@@ -147,14 +147,11 @@ init();
 cityButtons.addEventListener("click", function (event) {
   event.stopPropagation();
   let element = event.target;
-  if(element.nodeName === 'BUTTON') {
+  if (element.nodeName === "BUTTON") {
     cityInputFlag = false;
     getCityApi(element.textContent);
   }
-  
 });
 
 // When the html element cityForm is available and if submit button clicked then call formSubmitHandler function
-$(document).ready(function () {
-  cityForm.addEventListener("submit", formSubmitHandler);
-});
+cityForm.addEventListener("submit", formSubmitHandler);

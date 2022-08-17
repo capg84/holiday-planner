@@ -1,14 +1,16 @@
-import "./script.js";
-
+const APIKey = "5d6c592be6cd7dca9263abb86e216d9c";
 var currencyApiKey = "2af4ef798a01b92fe52e4860";
 var selectedCurrency = document.getElementsByClassName("active");
-var calculate = document.getElementById('calBtn');
-var convertedAmountEl = document.getElementById('converted');
+var calculate = document.getElementById("calBtn");
+var convertedAmountEl = document.getElementById("converted");
 var fromCurrency = "";
 var localAmount = "";
-var visitingCurrency = ""; 
+var visitingCurrency = "";
 var searchHistoryEl = document.querySelector(".searchHist");
 var savedData = JSON.parse(localStorage.getItem("searches")) || [];
+let cityButtons = document.querySelector("#city-buttons");
+let cityInputEl = document.querySelector("#city-input");
+let cityForm = document.querySelector("#city-form");
 
 // create global array to store searched cities locally
 let cities = [];
@@ -25,9 +27,142 @@ customSearch.setAttribute(
   "display:flex;align-items:center;justify-content:center;"
 );
 
-function getParams() {
+function init() {
+  // document.getElementById(".custom-content").children[0].text;
+  getStoredCities();
+  getParams(document.location);
+}
+
+// called when the submit button is clicked
+let formSubmitHandler = function (event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  let city = cityInputEl.value.trim();
+
+  if (city) {
+    getCityApi(city);
+    cityInputEl.value = "";
+  } else {
+    $(".first").modal("show"); // changed to modal
+  }
+};
+
+function getCityApi(city) {
+  let requestUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&appid=" +
+    APIKey;
+
+  // fetch the weather api data for the selected city using the url
+  fetch(requestUrl)
+    .then(function (response) {
+      // display data not found
+      if (response.ok) {
+        response.json().then(function (data) {
+          // cityInputEl.value = "";
+          getStoredCities();
+          storeCity(city);
+          // call display page and pass query
+          let queryString =
+            "./search.html?q=" + city + "&country=" + data.sys.country;
+          // process the city parameters passed from script.js
+          getParams(queryString);
+          location.assign(queryString);
+        });
+      } else {
+        //   alert("Error: " + response.statusText);
+        $(".two").modal("show"); // changed to modal
+      }
+    })
+    .catch(function (error) {
+      // alert("Unable to connect to GitHub");
+      $(".three").modal("show"); // changed to modal
+    });
+}
+
+// The following function renders items in a cities list as <button> elements
+function renderCities() {
+  // Clear cityButtons element
+  cityButtons.innerHTML = "";
+  // Render a new li for each todo
+  for (let i = 0; i < cities.length; i++) {
+    let city = cities[i];
+
+    // create button for the city
+    let button = document.createElement("button");
+    button.setAttribute("class", "ui grey button row");
+    button.setAttribute("style", "margin-bottom:2%;");
+    button.textContent = city;
+
+    // add new city to the first in the list of buttons already on display
+    if (i === cities.length - 1) {
+      cityButtons.prepend(button);
+    }
+    // add previously searched cities to the display
+    else cityButtons.appendChild(button);
+  }
+}
+
+function storeCity(city) {
+  let exists = false;
+  for (let i = 0; i < cities.length; i++)
+    if (cities[i].toLowerCase() === city.toLowerCase()) exists = true;
+
+  // prevent duplication of cities in array
+  if (!exists) {
+    if (cities.length === 5)
+      // only 5 cities can be stored. Replace last city entered.
+      cities[4] = city;
+    // add new city to local storage
+    else cities.push(city);
+
+    // convert city names to title case
+    convertToTitleCase();
+    // store cities to local storage
+    // Stringify and set key in localStorage to cities array
+    localStorage.setItem("cities", JSON.stringify(cities));
+  }
+}
+
+function convertToTitleCase() {
+  // change city to title case
+  let tempCity = "";
+  // loop through cities
+  for (let i = 0; i < cities.length; i++) {
+    // convert city to lowercase
+    tempCity = cities[i].toLowerCase();
+    // split each word into a comma seperated array with a space
+    tempCity = tempCity.split(" ");
+    // loop through the words in the city string
+    for (let x = 0; x < tempCity.length; x++) {
+      // convert the first letter of each word to uppercase
+      tempCity[x] = tempCity[x].charAt(0).toUpperCase() + tempCity[x].slice(1);
+    }
+    // join each word in the city together seperated by a space
+    cities[i] = tempCity.join(" ");
+  }
+}
+
+// get cities previous searched from local storages
+// create buttons for each city stored
+function getStoredCities() {
+  // Get stored todos from localStorage
+  let storedCities = JSON.parse(localStorage.getItem("cities"));
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedCities !== null) {
+    cities = storedCities;
+  }
+
+  renderCities();
+}
+
+function getParams(queryString) {
+  let searchParamsArr = "";
   // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
-  let searchParamsArr = document.location.search.split("&");
+  if (queryString) searchParamsArr = document.location.search.split("&");
+  else searchParamsArr = queryString;
 
   // Get the query and format values
   let queryCity = searchParamsArr[0].split("=").pop();
@@ -42,11 +177,11 @@ function getParams() {
 // get city for weather data
 function getSearchQuery(city) {
   if (city) {
-  // use city from getParams
-  getCoordinates(city);
-} else {
-  $('.first').modal('show'); // changed to modal
-}
+    // use city from getParams
+    getCoordinates(city);
+  } else {
+    $(".first").modal("show"); // changed to modal
+  }
 }
 
 function searchCountryApi(city, country) {
@@ -117,15 +252,19 @@ function displayDetails(countryData) {
   let populationEl = document.createElement("p");
   var populationNum = countryData[0].population;
   var abbreviations = ["", "k", "m", "b", "t"];
-  var abbreviatedNum = Math.floor((""+populationNum).length/3);
-  var populationValue = parseFloat((abbreviatedNum != 0 ? (populationNum / Math.pow(1000, abbreviatedNum)) : populationNum).toPrecision(2));
+  var abbreviatedNum = Math.floor(("" + populationNum).length / 3);
+  var populationValue = parseFloat(
+    (abbreviatedNum != 0
+      ? populationNum / Math.pow(1000, abbreviatedNum)
+      : populationNum
+    ).toPrecision(2)
+  );
   if (populationValue % 1 != 0) {
     populationValue = populationValue.toFixed(1);
   }
   var abbreviatedPop = populationValue + abbreviations[abbreviatedNum];
 
-  populationEl.innerHTML =
-    "<strong>Population:</strong> " + abbreviatedPop;
+  populationEl.innerHTML = "<strong>Population:</strong> " + abbreviatedPop;
   let languageEl = document.createElement("p");
   // get languages objects
   let languages = countryData[0].languages;
@@ -145,7 +284,6 @@ function displayDetails(countryData) {
   // select first currency
   let currency = currencyKeys[0];
   visitingCurrency = currency;
-  console.log(visitingCurrency);
   // get symbol for currency
   let currencySymbol = currencies[Object.keys(currencies)[0]].symbol;
   currencyEl.innerHTML =
@@ -298,62 +436,93 @@ $(".zerobtn").click(function () {
   clearSearches();
 });
 
-// process the city parameters passed from script.js
-getParams();
-
 $(".ui.dropdown").dropdown();
 
 //currency coverter API
 
-  //adding event to the calculate button
-  calculate.addEventListener("click", function(){
-    
-    var localAmountEl = document.getElementById('fromCurrencyInput');
-    localAmount = localAmountEl.value;
-    console.log(localAmount);
+//adding event to the calculate button
+calculate.addEventListener("click", function () {
+  var localAmountEl = document.getElementById("fromCurrencyInput");
+  localAmount = localAmountEl.value;
+  console.log(localAmount);
 
-    fromCurrency = document.getElementsByClassName('text')[0].innerHTML;
-    console.log(fromCurrency);
+  fromCurrency = document.getElementsByClassName("text")[0].innerHTML;
+  console.log(fromCurrency);
 
-    currencyApi()
+  currencyApi();
+});
 
-  });
+//function to format the numbers to money
+function formatMoney(number, decPlaces, decSep, thouSep) {
+  (decPlaces = isNaN((decPlaces = Math.abs(decPlaces))) ? 2 : decPlaces),
+    (decSep = typeof decSep === "undefined" ? "." : decSep);
+  thouSep = typeof thouSep === "undefined" ? "," : thouSep;
+  var sign = number < 0 ? "-" : "";
+  var i = String(
+    parseInt((number = Math.abs(Number(number) || 0).toFixed(decPlaces)))
+  );
+  var j = (j = i.length) > 3 ? j % 3 : 0;
 
-  //function to format the numbers to money
-  function formatMoney(number, decPlaces, decSep, thouSep) {
-    decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
-    decSep = typeof decSep === "undefined" ? "." : decSep;
-    thouSep = typeof thouSep === "undefined" ? "," : thouSep;
-    var sign = number < 0 ? "-" : "";
-    var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
-    var j = (j = i.length) > 3 ? j % 3 : 0;
-
-    return sign +
-        (j ? i.substr(0, j) + thouSep : "") +
-        i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
-        (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
-  }
+  return (
+    sign +
+    (j ? i.substr(0, j) + thouSep : "") +
+    i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
+    (decPlaces
+      ? decSep +
+        Math.abs(number - i)
+          .toFixed(decPlaces)
+          .slice(2)
+      : "")
+  );
+}
 
 function currencyApi() {
-  var currencyApiUrl =  'https://v6.exchangerate-api.com/v6/'+currencyApiKey+'/pair/'+fromCurrency+'/'+visitingCurrency;
+  var currencyApiUrl =
+    "https://v6.exchangerate-api.com/v6/" +
+    currencyApiKey +
+    "/pair/" +
+    fromCurrency +
+    "/" +
+    visitingCurrency;
 
   console.log(currencyApiUrl);
   console.log(visitingCurrency);
-  
+
   fetch(currencyApiUrl)
-    .then(response => response.json())
-    .then(data=> { 
-    console.log('£1 = '+ visitingCurrency + data.conversion_rate); 
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("£1 = " + visitingCurrency + data.conversion_rate);
 
-    var currentRate = data.conversion_rate;
-    document.getElementById('currentRate').innerText = "Current rate is 1 "+ fromCurrency + " = " + visitingCurrency + ' ' + currentRate;
+      var currentRate = data.conversion_rate;
+      document.getElementById("currentRate").innerText =
+        "Current rate is 1 " +
+        fromCurrency +
+        " = " +
+        visitingCurrency +
+        " " +
+        currentRate;
 
-    var convertedAmount = localAmount * data.conversion_rate;
-    console.log(formatMoney(convertedAmount));
+      var convertedAmount = localAmount * data.conversion_rate;
+      console.log(formatMoney(convertedAmount));
 
-    convertedAmountEl.style.display = "inline-block";
+      convertedAmountEl.style.display = "inline-block";
 
-    convertedAmountEl.innerText = visitingCurrency + ' ' + formatMoney(convertedAmount);
-    
-  });
+      convertedAmountEl.innerText =
+        visitingCurrency + " " + formatMoney(convertedAmount);
+    });
 }
+
+init();
+
+// Add click event to cityButtons element
+cityButtons.addEventListener("click", function (event) {
+  event.stopPropagation();
+  let element = event.target;
+  if (element.nodeName === "BUTTON") {
+    cityInputFlag = false;
+    getCityApi(element.textContent);
+  }
+});
+
+// When the html element cityForm is available and if submit button clicked then call formSubmitHandler function
+cityForm.addEventListener("submit", formSubmitHandler);
