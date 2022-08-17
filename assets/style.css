@@ -54,10 +54,10 @@ footer {
     height: 60px;
 }
 
-.row {
+#social {
     font-size: 15px;
     padding-left: 15px;
-    margin-top: 5px;
+    margin-top: 5px !important;
 }
 
 i:hover {
@@ -121,10 +121,10 @@ i:hover {
         height: 60px;
     }
 
-    .row {
+    #social {
         font-size: 15px;
         padding-left: 15px;
-        margin-top: 5px;
+        margin-top: 5px !important;
     }
 
     i:hover {
