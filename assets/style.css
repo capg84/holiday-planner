@@ -54,6 +54,12 @@ footer {
     height: 60px;
 }
 
+.row {
+    font-size: 15px;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
 i:hover {
     cursor: pointer;
 }
@@ -118,6 +124,7 @@ i:hover {
     .row {
         font-size: 15px;
         padding-left: 15px;
+        margin-top: 5px;
     }
 
     i:hover {
