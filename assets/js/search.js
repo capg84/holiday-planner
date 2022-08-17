@@ -380,7 +380,7 @@ function getWeatherApi(lat, lon, name) {
       //display UVI
       var uvi = data.current.uvi;
       var uviEl = document.querySelector(".uvi");
-      uviEl.innerHTML = "UV Index:  <span>" + uvi + "</span>";
+      uviEl.innerHTML = "UV Index:  <span style='border-radius: 5px; padding: 5px; color: #6F2C4F;'>" + uvi + "</span>";
       // change UVI background color depending on figure
       var span = document.querySelector("span");
       if (uvi <= 2) {

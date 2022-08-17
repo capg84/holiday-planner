@@ -23,7 +23,7 @@ main {
 }
 
 .logo {
-    margin: 50px 0px 30px 0px;
+    margin: 30px 0px 30px 0px;
     min-width: 300px;
     display: flex;
     font-family: 'Staatliches', cursive;
@@ -82,7 +82,7 @@ div#country-details {
     order: 1 !important;
     background-color: #b03264;
     width: 100% !important;
-    height: 400px;
+    height: 450px;
 }
 
 #flagImg {
@@ -95,6 +95,9 @@ div#weatherForecast {
     order: 2 !important;
     background-color: #6F2C4F;
     width: 100% !important;
+    color: white;
+    padding-bottom: 35px;
+    /* padding-top: 0px !important; */
 }
 
 div#currencyConvert {
@@ -103,6 +106,8 @@ div#currencyConvert {
     color: rgb(234, 216, 50);
     width: 100% !important;
     margin-bottom: 50px;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    font-weight: 700;
 }
 
 .four {
@@ -175,6 +180,12 @@ footer {
     height: 60px;
 }
 
+.row {
+    font-size: 15px;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
 /* css properties for bigger screen */
 @media only screen and (min-width: 992px )  { 
     body {
@@ -208,8 +219,9 @@ footer {
         min-width: 300px;
         display: flex;
         font-family: 'Staatliches', cursive;
-        font-size: 80px;
+        font-size: 70px;
         cursor: pointer;
+        margin: 30px 0px 30px 0px;
     }
 
     #city-form {
@@ -218,6 +230,7 @@ footer {
         width: 950px;
         justify-content: right;
         margin-top: 30px;
+        margin-left: -300px;
     }
 
     .input-row {
@@ -276,14 +289,16 @@ footer {
     div#currencyConvert {
         order: 1 !important;
         background-color: #b03264;
-        color: rgb(234, 216, 50);
+        color: white;
         width: 33.33% !important;
         margin-bottom: 0px;
+        font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+        font-weight: 700;
     }
 
     .four {
         background-color: #b03264;
-        color: rgb(230, 127, 53);
+        color: white;
         font-size: 30px;
     }
 
@@ -354,5 +369,6 @@ footer {
     .row {
         font-size: 15px;
         padding-left: 15px;
+        margin-top: 5px;
     }
 } 
